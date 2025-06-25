@@ -1,0 +1,6 @@
+@SuperShopApi_HostAddress = http://localhost:5029
+
+GET {{SuperShopApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
