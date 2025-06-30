@@ -1,9 +1,16 @@
+﻿using SuperShopApi.Context; // substitua pelo namespace onde está seu DbContext
+using Microsoft.EntityFrameworkCore;
+using SuperShopApi.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ⬇️ Aqui você adiciona o DbContext e lê a string de conexão do appsettings.json
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
+// Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
