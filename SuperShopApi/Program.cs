@@ -1,6 +1,7 @@
 ﻿using SuperShopApi.Context; // substitua pelo namespace onde está seu DbContext
 using Microsoft.EntityFrameworkCore;
 using SuperShopApi.Context;
+using SuperShopApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+// ⬇️ Aqui registra o serviço no DI (injeção de dependência)
+builder.Services.AddScoped<IClienteService, ClientesService>();
 
 // Add services to the container.
 builder.Services.AddControllers();
