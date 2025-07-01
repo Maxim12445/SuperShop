@@ -11,23 +11,23 @@ namespace SuperShopApi.Models
 
         [Required]
         [StringLength(80)]
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
 
         [Required]
         [StringLength(80)]
-        public string Apelido { get; set; }
+        public required string Apelido { get; set; }
 
         [Required]
         [StringLength(9, MinimumLength = 9, ErrorMessage = "O NIF deve ter 9 dígitos.")]
-        public string Nif { get; set; }
+        public required string Nif { get; set; }
 
         [Required]
         [StringLength(200)]
-        public string Morada { get; set; }
+        public required string Morada { get; set; }
 
         [Required]
         [Phone]
         [StringLength(20)]
-        public string Telefone { get; set; }
+        public required string Telefone { get; set; }
     }
 }

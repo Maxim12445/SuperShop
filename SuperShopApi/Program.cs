@@ -1,26 +1,34 @@
-﻿using SuperShopApi.Context; // substitua pelo namespace onde está seu DbContext
+﻿using SuperShopApi.Context;
 using Microsoft.EntityFrameworkCore;
-using SuperShopApi.Context;
 using SuperShopApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ⬇️ Aqui você adiciona o DbContext e lê a string de conexão do appsettings.json
+// ⬇️ DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// ⬇️ Aqui registra o serviço no DI (injeção de dependência)
+// ⬇️ Serviço de Clientes
 builder.Services.AddScoped<IClienteService, ClientesService>();
 
-// Add services to the container.
+// ⬇️ Configuração do CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy => policy.WithOrigins("http://localhost:3000")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
+
+// Serviços básicos
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ⬇️ Middlewares
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -28,6 +36,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// ⬇️ Use o CORS antes de authorization!
+app.UseCors("AllowReactApp");
 
 app.UseAuthorization();
 
