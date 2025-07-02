@@ -1,6 +1,8 @@
 ﻿using SuperShopApi.Context;
 using Microsoft.EntityFrameworkCore;
 using SuperShopApi.Services;
+using Microsoft.AspNetCore.Identity;
+using SuperShopApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+// ⬇️ Identity
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 // ⬇️ Serviço de Clientes
 builder.Services.AddScoped<IClienteService, ClientesService>();
