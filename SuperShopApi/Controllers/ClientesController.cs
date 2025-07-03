@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperShopApi.Models;
 using SuperShopApi.Services;
@@ -7,7 +9,7 @@ namespace SuperShopApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Produces("application/json")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ClientesController : ControllerBase
     {
         private IClienteService _clienteService;
