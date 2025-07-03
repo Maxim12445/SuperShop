@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using SuperShopApi.Services;
 using Microsoft.AspNetCore.Identity;
 using SuperShopApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,27 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 // ⬇️ Serviço de Clientes
 builder.Services.AddScoped<IClienteService, ClientesService>();
+
+// ⬇️ Serviço de Autenticação
+builder.Services.AddScoped<IAuthenticate, AuthenticateService>();
+
+// ⬇️ Configuração do JWT Authentication
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
 
 // ⬇️ Configuração do CORS
 builder.Services.AddCors(options =>
@@ -47,8 +71,10 @@ app.UseHttpsRedirection();
 // ⬇️ Use o CORS antes de authorization!
 app.UseCors("AllowReactApp");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+

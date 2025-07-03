@@ -13,30 +13,32 @@ namespace SuperShopApi.Context
 
         public DbSet<Cliente> Clientes { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Cliente>().HasData(
-        //        new Cliente
-        //        {
-        //            Id = 1,
-        //            Nome = "João Silva",
-        //            Apelido = "Silva",
-        //            Nif = "123456789",
-        //            Morada = "Rua das Flores, 123",
-        //            Telefone = "912345678"
-        //        },
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        //        new Cliente
-        //        {
-        //            Id = 2,
-        //            Nome = "Maria Santos",
-        //            Apelido = "Santos",
-        //            Nif = "987654321",
-        //            Morada = "Avenida da Liberdade, 456",
-        //            Telefone = "919876543"
-        //        }
+            modelBuilder.Entity<Cliente>().HasData(
+                new Cliente
+                {
+                    Id = 1,
+                    Nome = "João Silva",
+                    Apelido = "Silva",
+                    Nif = "123456789",
+                    Morada = "Rua das Flores, 123",
+                    Telefone = "912345678"
+                },
 
-        //        );
-        //}
+                new Cliente
+                {
+                    Id = 2,
+                    Nome = "Maria Santos",
+                    Apelido = "Santos",
+                    Nif = "987654321",
+                    Morada = "Avenida da Liberdade, 456",
+                    Telefone = "919876543"
+                }
+
+                );
+        }
     }
 }
