@@ -1,0 +1,36 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font: 400 16px 'Roboto', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+}
+
+input, button {
+  font: 400 16px 'Roboto', sans-serif;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  filter: brightness(0.9);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}

@@ -1,0 +1,93 @@
+.cliente-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.1);
+}
+
+.cliente-container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cliente-container header img {
+  height: 60px;
+}
+
+.cliente-container header span {
+  font-size: 20px;
+  color: #333;
+}
+
+.cliente-container header .button {
+  background: #17202a;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cliente-container header button {
+  background: transparent;
+  border: none;
+}
+
+.cliente-container form {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.cliente-container form input {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #dcdce6;
+  border-radius: 8px;
+  padding: 0 16px;
+}
+
+.cliente-container form .button {
+  background: #17202a;
+  color: #fff;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.cliente-container h1 {
+  margin: 30px 0 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.cliente-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cliente-container ul li {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.cliente-container ul li button {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  background: transparent;
+  border: none;
+  margin-left: 10px;
+}
+
+.cliente-container ul li button:last-child {
+  right: 20px;
+}

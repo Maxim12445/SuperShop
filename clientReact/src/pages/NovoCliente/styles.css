@@ -1,0 +1,72 @@
+.novo-cliente-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.novo-cliente-container .Content {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+}
+
+.novo-cliente-container .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.novo-cliente-container .form h1 {
+  font-size: 28px;
+  margin: 20px 0;
+  color: #333;
+  text-align: center;
+}
+
+.novo-cliente-container .back-link {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  color: #17202a;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.novo-cliente-container .back-link:hover {
+  opacity: 0.8;
+}
+
+.novo-cliente-container .back-link svg {
+  margin-right: 8px;
+}
+
+.novo-cliente-container form input {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  border: 1px solid #dcdce6;
+  border-radius: 8px;
+}
+
+.novo-cliente-container form .button {
+  width: 100%;
+  height: 50px;
+  background: #17202a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.novo-cliente-container form .button:hover {
+  filter: brightness(0.9);
+}
