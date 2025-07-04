@@ -21,7 +21,7 @@ namespace SuperShopApi.Context
                 new Cliente
                 {
                     Id = 1,
-                    Nome = "João Silva",
+                    Nome = "João",
                     Apelido = "Silva",
                     Nif = "123456789",
                     Morada = "Rua das Flores, 123",
@@ -31,7 +31,7 @@ namespace SuperShopApi.Context
                 new Cliente
                 {
                     Id = 2,
-                    Nome = "Maria Santos",
+                    Nome = "Maria",
                     Apelido = "Santos",
                     Nif = "987654321",
                     Morada = "Avenida da Liberdade, 456",
